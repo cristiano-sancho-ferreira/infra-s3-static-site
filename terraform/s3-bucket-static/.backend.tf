@@ -6,7 +6,7 @@ terraform {
     }
     
   backend "s3" {
-    bucket = "sancho-terraform-states"
+    bucket = "sancho-terraform-state"
     key    = "state/aws/sdlf/sdlf-cicd/terraform.tfstate"
     region = "us-east-1"
   }
