@@ -4,10 +4,10 @@ on: push
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repositories
         uses: actions/checkout@v2
 
       - name: Set up AWS CLI
@@ -17,7 +17,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  # substitua pela região desejada
 
-      - name: Extract Bucket Name from Issue
+      - name: Extract Bucket Name
         run: |
           export BUCKET_NAME=$(echo "${{ github.event.issue.title }}")
           echo "Bucket Name: $BUCKET_NAME"
@@ -30,11 +30,11 @@ jobs:
           terraform init
           terraform apply -auto-approve -var="bucket_name=${{ env.BUCKET_NAME }}"
 
-      - name: Add comment
-        run: gh issue comment "$NUMBER" --repo "$REPO" --body "$BODY"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NUMBER: ${{ github.event.issue.number }}
-          REPO: ${{ github.repository }}
-          BODY: >
-            O bucket S3 foi criado com sucesso! 🎉
+#      - name: Add comment
+#        run: gh issue comment "$NUMBER" --repo "$REPO" --body "$BODY"
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+#          NUMBER: ${{ github.event.issue.number }}
+#          REPO: ${{ github.repository }}
+#          BODY: >
+#            O bucket S3 foi criado com sucesso! 🎉
