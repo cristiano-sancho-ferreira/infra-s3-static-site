@@ -1,9 +1,6 @@
 name: Create S3 Static Site
 
-on:
-  issues:
-    type:
-      -opened
+on: pull_request
 
 jobs:
   deploy:
