@@ -1,3 +1,7 @@
+variable "bucket_name" {
+    type = string
+}
+
 resource "aws_s3_bucket" "static_site_bucket" {
     bucket = "static-site-${var.bucket_name}"
 
