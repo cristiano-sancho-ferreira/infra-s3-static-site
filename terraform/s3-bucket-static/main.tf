@@ -1,5 +1,6 @@
 variable "bucket_name" {
     type = string
+    default = "sancho"
 }
 
 resource "aws_s3_bucket" "static_site_bucket" {
