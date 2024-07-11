@@ -4,7 +4,7 @@ variable "bucket_name" {
 }
 
 resource "aws_s3_bucket" "static_site_bucket" {
-    bucket = "static-site-sancho222"
+    bucket = "static-site-sancho7777"
     force_destroy = true
 
     tags = {
