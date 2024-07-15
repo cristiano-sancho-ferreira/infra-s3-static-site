@@ -25,6 +25,7 @@ jobs:
 
       - name: Run Terraform
         run: |
+          aws s3 ls
           cd terraform/s3-bucket-static
           terraform init
           terraform apply -auto-approve 
