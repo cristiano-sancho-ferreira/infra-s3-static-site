@@ -27,7 +27,7 @@ jobs:
         run: |
           aws s3 ls
           cd terraform/s3-bucket-static
-          terraform init
+          terraform init -backend-config="region=us-east-1" -backend-config="bucket=sancho-terraform-state" -backend-config="key=state/aws/s3-static/terraform.tfstate"
           terraform apply -auto-approve 
 #          -var="bucket_name=${{ env.BUCKET_NAME }}"
 
